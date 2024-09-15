@@ -8,6 +8,9 @@ namespace HTTPRanger.src
 {
     internal static class HTTPRangerWrapper
     {
+        /// <summary>
+        /// Static helper objects
+        /// </summary>
         private static readonly HttpClient _httpClient = new HttpClient();
         private static readonly HttpRequestHelper _requestHelper = new HttpRequestHelper();
 
@@ -32,7 +35,7 @@ namespace HTTPRanger.src
             }
             catch (Exception ex)
             {
-                throw new HTTPRangerException(ex.Message);
+                throw new HTTPRangerException(999);
             }
         }
 

@@ -8,17 +8,33 @@ namespace HTTPRanger.src
 {
     public class HTTPRangerException : Exception
     {
+        /// <summary>
+        /// StatusCode
+        /// </summary>
         public int StatusCode { get; private set; }
 
+        /// <summary>
+        /// Constructor for HTTPRangerException, receives a status code and throws the corresponding error
+        /// </summary>
+        /// <param name="statusCode"></param>
         public HTTPRangerException(int statusCode) : base(GetErrorMessageByCode(statusCode))
         { 
             this.StatusCode = statusCode;
         }
-        public HTTPRangerException(string? message) : base(message) 
+
+        /// <summary>
+        /// General Constructor for HTTPRangerException
+        /// </summary>
+        /// <param name="message"></param>
+        public HTTPRangerException(string message) : base(message)
         {
             this.StatusCode = 999;
         }
 
+        /// <summary>
+        /// Gets a status code and returns the corresponding error message
+        /// </summary>
+        /// <param name="statusCode"></param>
         private static string GetErrorMessageByCode(int statusCode)
         {
             return statusCode switch

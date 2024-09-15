@@ -17,7 +17,7 @@ namespace HTTPRanger
         public static async Task<HTTPRangerResponse> GetAsync(string url, RequestOptions? options = null)
         {
             if (!IsURLValid(url))
-                throw new HTTPRangerException("Invalid URL.");
+                throw new HTTPRangerException(404);
             else
                 return await HTTPRangerWrapper.GetAsync(url, options);
         }
@@ -32,7 +32,7 @@ namespace HTTPRanger
         public static async Task<HTTPRangerResponse> PostAsync(string url, string content, RequestOptions? options = null)
         {
             if (!IsURLValid(url))
-                throw new HTTPRangerException("Invalid URL.");
+                throw new HTTPRangerException(999);
             else
                 return await HTTPRangerWrapper.PostAsync(url, content, options);
         }
