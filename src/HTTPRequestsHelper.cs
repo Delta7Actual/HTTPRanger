@@ -38,9 +38,7 @@ namespace HTTPRanger.src
             }
 
             if (options != null)
-            {
                 ApplyHeaders(requestMessage, options);
-            }
 
             return requestMessage;
         }

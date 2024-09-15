@@ -48,6 +48,10 @@ namespace HTTPRanger.src
                 503 => "Service Unavailable: The server is currently unable to handle the request.",
                 504 => "Gateway Timeout: The server, while acting as a gateway or proxy, did not receive a timely response.",
                 999 => "External error unrelated to HTTPRanger occured.",
+                
+                // TO ADD AN ERROR STATUS CODE SIMPLY ADD IT LIKE SO
+                // -> CodeStatus => CodeStatusErrorMessage
+
                 _ => "Unknown error occurred."
             };
         }
