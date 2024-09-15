@@ -9,6 +9,9 @@ namespace HTTPRanger.src
 {
     public class RequestOptions
     {
+        /// <summary>
+        /// A Dictionary<string, string> holding the additional http headers
+        /// </summary>
         public Dictionary<string, string> Headers{ get; set; }
 
         /// <summary>

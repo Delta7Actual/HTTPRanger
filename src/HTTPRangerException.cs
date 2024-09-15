@@ -14,7 +14,10 @@ namespace HTTPRanger.src
         { 
             this.StatusCode = statusCode;
         }
-        public HTTPRangerException(string? message) : base(message) { }
+        public HTTPRangerException(string? message) : base(message) 
+        {
+            this.StatusCode = 999;
+        }
 
         private static string GetErrorMessageByCode(int statusCode)
         {
