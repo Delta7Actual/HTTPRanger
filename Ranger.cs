@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,10 +17,18 @@ namespace HTTPRanger
         /// <returns>HTTPRangerResponse for the request</returns>
         public static async Task<HTTPRangerResponse> GetAsync(string url, RequestOptions? options = null)
         {
-            if (!IsURLValid(url))
+            try
+            {
+                if (!IsURLValid(url))
+                    throw new HTTPRangerException(404);
+                else
+                    return await HTTPRangerWrapper.GetAsync(url, options);
+            }
+            catch (HttpRequestException)
+            {
+                //DNS resolution errors
                 throw new HTTPRangerException(404);
-            else
-                return await HTTPRangerWrapper.GetAsync(url, options);
+            }
         }
 
         /// <summary>
@@ -44,10 +53,8 @@ namespace HTTPRanger
         /// <returns></returns>
         private static bool IsURLValid(string url)
         {
-            // TryCreate returns a bool and outputs the Uri if it's valid
             return Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)
                    && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
         }
-
     }
 }
